@@ -10,7 +10,7 @@ class BankAccount
     @balance += amount
   end
   def display_balance
-    @balance
+    self.balance
   end
   def valid?
     if @status = "open" || @balance > 0
