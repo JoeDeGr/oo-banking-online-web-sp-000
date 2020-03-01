@@ -19,7 +19,7 @@ class BankAccount
       puts " The account is invalid."
     end
   end
-  def close_accout
+  def close_account
     @balance = 0
     @status = closed
   end
