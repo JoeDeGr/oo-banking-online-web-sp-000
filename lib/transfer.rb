@@ -10,7 +10,7 @@ class Transfer
     @amount = amount
   end
   def valid?
-    @sender.valid? && @sender.balance.to_i > @amount && @receiver.valid? ? true : false
+    @sender.valid? && @sender.balance > @amount && @receiver.valid? ? true : false
   end
   def sender_balance
     @sender.display_balance
@@ -20,7 +20,7 @@ class Transfer
     while @status == "pending" do
       if !self.valid?
         self.status = "rejected"
-        "Transaction rejected. Please check your account balance."
+        return "Transaction rejected. Please check your account balance."
       elsif
         @sender.balance -= @amount
         @receiver.balance += @amount
