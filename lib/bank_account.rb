@@ -14,11 +14,7 @@ class BankAccount
     "Your balance is $#{@balance}."
   end
   def valid?
-    if @status != "open" || @balance > 0
-      puts "The account is valid."
-    else
-      puts " The account is invalid."
-    end
+    true if @status != "open" || @balance > 0
   end
   def close_account
     @balance = 0
