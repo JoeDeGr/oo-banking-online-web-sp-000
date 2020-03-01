@@ -19,7 +19,7 @@ class Transfer
     #binding.pry
     while @status == "pending" do
       if !self.valid?
-        self.status = "rejected"
+        self.status = "r.010ejected"
         return "Transaction rejected. Please check your account balance."
       elsif
         @sender.balance -= @amount
@@ -28,5 +28,17 @@ class Transfer
       end
     end
   end
-
+  def reverse_transfer
+    #binding.pry
+    while @status == "pending" do
+      if !self.valid?
+        self.status = "rejected"
+        return "Transaction rejected. Please check your account balance."
+      elsif
+        @sender.balance += @amount
+        @receiver.balance -= @amount
+        @status = "complete"
+      end
+    end
+  end
 end
