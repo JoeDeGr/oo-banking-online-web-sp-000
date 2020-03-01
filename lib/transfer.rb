@@ -18,10 +18,10 @@ class Transfer
   def execute_transaction
     #binding.pry
     while @status == "pending" do
-      if @sender.balance < @amount
+      if !self.valid?
         self.status = "rejected"
         "Transaction rejected. Please check your account balance."
-      elsif status = "pending"
+      elsif status == "pending"
         @sender.balance -= @amount
         @receiver.balance += @amount
         @status = "complete"
