@@ -16,6 +16,7 @@ class Transfer
     @sender.display_balance
   end
   def execute_transaction
+    binding.pry
     while @status == "pending" do
       if (@sender.balance < self.amount || !self.valid?)
         @status = "rejected"
